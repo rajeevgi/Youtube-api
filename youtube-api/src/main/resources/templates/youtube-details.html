@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SPRK Youtube</title>
+</head>
+
+<body>
+    <center>
+        <a href="/">New Video Analytics</a>
+
+        <div th:if="${message}">
+            <p th:text="${message}" style="color:red;"></p>
+        </div>
+        <div th:if="${result > 0}">
+            <h3>Title: <span th:text="${title}"></span></h3>
+
+            <div th:utext="${embedHtml}"></div>
+
+
+            <div th:if="${descriptionLength > 0}">
+                <p>Description:</p>
+                <div style="text-align: justify; margin: 0 80px">
+
+                    <p th:text="${description}"></p>
+
+                </div>
+            </div>
+
+            <div style="text-align: justify; margin: 0 80px;" th:if="${tagsLength > 0}">
+                <p>Tags:</p>
+
+                <span th:each="tag : ${tags}">#[[${tag}]] </span>
+
+                <p>Statistics:</p>
+                <p>Viewcount: <span th:text="${viewcount}"></span></p>
+
+                <p>Likecount: <span th:text="${likecount}"></span></p>
+
+                <p>Comment-count: <span th:text="${commentcount}"></span></p>
+            </div>
+        </div>
+    </center>
+
+
+</body>
+
+</html>
